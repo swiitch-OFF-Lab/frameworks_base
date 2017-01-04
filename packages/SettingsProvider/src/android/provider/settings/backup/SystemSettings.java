@@ -89,8 +89,13 @@ public class SystemSettings {
         Settings.System.AMBIENT_NOTIFICATION_LIGHT,
         Settings.System.AMBIENT_NOTIFICATION_LIGHT_AUTOMATIC,
         Settings.System.NOTIFICATION_LIGHT_PULSE,
+<<<<<<< HEAD
         Settings.System.RINGTONE_VIBRATION_PATTERN,
         Settings.System.CUSTOM_RINGTONE_VIBRATION_PATTERN,
         Settings.System.LOCKSCREEN_BATTERY_INFO,
+=======
+        Settings.System.NETWORK_TRAFFIC_STATE,
+        Settings.System.NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD,
+>>>>>>> f2e774761f2e (SystemUI: Squash import NetworkTraffic)
     };
 }
