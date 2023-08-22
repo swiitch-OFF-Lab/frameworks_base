@@ -680,9 +680,7 @@ public class StartingSurfaceDrawer {
         if (hideView) {
             decorView.setVisibility(View.GONE);
         }
-        if (decorView.isAttachedToWindow()) {
-            mWindowManagerGlobal.removeView(decorView, false /* immediate */);
-        }
+        mWindowManagerGlobal.removeView(decorView, false /* immediate */);
     }
 
     /**
