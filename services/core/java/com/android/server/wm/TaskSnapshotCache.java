@@ -17,7 +17,6 @@
 package com.android.server.wm;
 
 import android.annotation.Nullable;
-import android.os.SystemProperties;
 import android.window.TaskSnapshot;
 import android.util.ArrayMap;
 
@@ -34,7 +33,6 @@ class TaskSnapshotCache {
     private final TaskSnapshotLoader mLoader;
     private final ArrayMap<ActivityRecord, Integer> mAppTaskMap = new ArrayMap<>();
     private final ArrayMap<Integer, CacheEntry> mRunningCache = new ArrayMap<>();
-    private final boolean GET_SNAPSHOTS_FROM_DISK = SystemProperties.getBoolean("persist.sys.get_snapshots_from_disk", false);
 
     TaskSnapshotCache(WindowManagerService service, TaskSnapshotLoader loader) {
         mService = service;
@@ -65,15 +63,7 @@ class TaskSnapshotCache {
             // Try the running cache.
             final CacheEntry entry = mRunningCache.get(taskId);
             if (entry != null) {
-                if (entry.snapshot != null) {
-                    // 1.When GET_SNAPSHOTS_FROM_DISK is false, directly obtain snapshots from cache.
-                    // 2.When isLowResolution is false, obtain snapshotS from cache.
-                    // 3.When obtaining low resolution snapshots and the snapshots stored in the cache are low resolution, obtain snapshots from the cache.
-                    // 4.When restoreFromDisk is false, obtain snapshot from cache.
-                    if (!GET_SNAPSHOTS_FROM_DISK || !isLowResolution || (isLowResolution && entry.snapshot.isLowResolution()) || !restoreFromDisk) {
-                        return entry.snapshot;
-                    }
-                }
+                return entry.snapshot;
             }
         }
 
