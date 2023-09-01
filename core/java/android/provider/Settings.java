@@ -5964,12 +5964,13 @@ public final class Settings {
         public static final String LIVE_DISPLAY_HINTED = "live_display_hinted";
 
         /**
-         * Network traffic indication
+         * Network traffic indicator location
          * 0 = Disabled
-         * 1 = Enabled
+         * 1 = Statusbar
+         * 2 = Quick statusbar
          * @hide
          */
-        public static final String NETWORK_TRAFFIC_ENABLED = "network_traffic_enabled";
+        public static final String NETWORK_TRAFFIC_LOCATION = "network_traffic_location";
 
         /**
          * Whether or not to hide the network traffic indicator when there is no activity
