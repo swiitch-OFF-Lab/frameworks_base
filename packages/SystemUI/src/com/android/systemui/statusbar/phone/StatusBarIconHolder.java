@@ -79,7 +79,6 @@ public class StatusBarIconHolder {
             TYPE_WIFI_NEW,
             TYPE_BLUETOOTH,
             TYPE_IMS
-            TYPE_BLUETOOTH
     })
     @Retention(RetentionPolicy.SOURCE)
     @interface IconType {}

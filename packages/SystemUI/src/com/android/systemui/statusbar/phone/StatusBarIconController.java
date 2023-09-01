@@ -603,9 +603,9 @@ public interface StatusBarIconController {
             return view;
         }
 
-        private NetworkTrafficSB onCreateNetworkTraffic(String slot) {
-            NetworkTrafficSB view = new NetworkTrafficSB(mContext);
-            view.setPadding(4, 0, 4, 0);
+        protected NetworkTrafficSB addNetworkTraffic(int index, String slot) {
+            NetworkTrafficSB view = onCreateNetworkTraffic(slot);
+            mGroup.addView(view, index, onCreateLayoutParams());
             return view;
         }
 
@@ -654,7 +654,7 @@ public interface StatusBarIconController {
 
         private NetworkTrafficSB onCreateNetworkTraffic(String slot) {
             NetworkTrafficSB view = new NetworkTrafficSB(mContext);
-            view.setPadding(2, 0, 2, 0);
+            view.setPadding(4, 0, 4, 0);
             return view;
         }
 
