@@ -297,9 +297,6 @@ public class SystemSettingsValidators {
             }
         });
         VALIDATORS.put(System.LIVE_DISPLAY_HINTED, new InclusiveIntegerRangeValidator(-3, 1));
-        VALIDATORS.put(System.NETWORK_TRAFFIC_LOCATION, NON_NEGATIVE_INTEGER_VALIDATOR);
-        VALIDATORS.put(System.NETWORK_TRAFFIC_AUTOHIDE, BOOLEAN_VALIDATOR);
-        VALIDATORS.put(System.NETWORK_TRAFFIC_UNIT_TYPE, NON_NEGATIVE_INTEGER_VALIDATOR);
         VALIDATORS.put(System.DISPLAY_CUTOUT_HIDDEN, BOOLEAN_VALIDATOR);
         VALIDATORS.put(System.SWIPE_TO_SCREENSHOT, BOOLEAN_VALIDATOR);
         VALIDATORS.put(System.ADAPTIVE_PLAYBACK_ENABLED, BOOLEAN_VALIDATOR);
@@ -319,6 +316,5 @@ public class SystemSettingsValidators {
                         return new InclusiveIntegerRangeValidator(0, 1000).validate(item);
                     }
                 });
-        VALIDATORS.put(System.LOCKSCREEN_BATTERY_INFO, BOOLEAN_VALIDATOR);
     }
 }

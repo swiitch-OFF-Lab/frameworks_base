@@ -21,7 +21,6 @@ import static com.android.systemui.statusbar.phone.StatusBarIconHolder.TYPE_MOBI
 import static com.android.systemui.statusbar.phone.StatusBarIconHolder.TYPE_MOBILE_NEW;
 import static com.android.systemui.statusbar.phone.StatusBarIconHolder.TYPE_WIFI;
 import static com.android.systemui.statusbar.phone.StatusBarIconHolder.TYPE_WIFI_NEW;
-import static com.android.systemui.statusbar.phone.StatusBarIconHolder.TYPE_NETWORK_TRAFFIC;
 
 import android.annotation.Nullable;
 import android.content.Context;
@@ -65,7 +64,6 @@ import com.android.systemui.statusbar.pipeline.wifi.ui.WifiUiAdapter;
 import com.android.systemui.statusbar.pipeline.wifi.ui.view.ModernStatusBarWifiView;
 import com.android.systemui.statusbar.pipeline.wifi.ui.viewmodel.LocationBasedWifiViewModel;
 import com.android.systemui.util.Assert;
-import com.android.systemui.statusbar.policy.StatusBarNetworkTraffic;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -489,9 +487,6 @@ public interface StatusBarIconController {
                 case TYPE_BLUETOOTH:
                     return addBluetoothIcon(index, slot, holder.getBluetoothState());
 
-                case TYPE_NETWORK_TRAFFIC:
-                    return addNetworkTraffic(index, slot);
-
                 case TYPE_IMS:
                     return addImsIcon(index, slot, holder.getImsState());
             }
@@ -538,13 +533,6 @@ public interface StatusBarIconController {
                 mDemoStatusIcons.addModernWifiView(mWifiViewModel);
             }
 
-            return view;
-        }
-
-        
-        protected StatusBarNetworkTraffic addNetworkTraffic(int index, String slot) {
-            StatusBarNetworkTraffic view = onCreateNetworkTraffic(slot);
-            mGroup.addView(view, index, onCreateLayoutParams());
             return view;
         }
 
@@ -647,11 +635,6 @@ public interface StatusBarIconController {
             return view;
         }
 
-        private StatusBarNetworkTraffic onCreateNetworkTraffic(String slot) {
-            StatusBarNetworkTraffic view = new StatusBarNetworkTraffic(mContext);
-            return view;
-        }
-
         private StatusBarImsView onCreateStatusBarImsView(String slot) {
             StatusBarImsView view = StatusBarImsView.fromContext(mContext, slot);
             return view;
@@ -691,11 +674,8 @@ public interface StatusBarIconController {
         }
 
         public void onSetIcon(int viewIndex, StatusBarIcon icon) {
-            View view = mGroup.getChildAt(viewIndex);
-            if (view instanceof StatusBarIconView) {
-                ((StatusBarIconView) view).set(icon);
-            }
-
+            StatusBarIconView view = (StatusBarIconView) mGroup.getChildAt(viewIndex);
+            view.set(icon);
         }
 
         public void onSetIconHolder(int viewIndex, StatusBarIconHolder holder) {

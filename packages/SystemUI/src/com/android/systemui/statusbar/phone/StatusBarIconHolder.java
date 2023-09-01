@@ -67,7 +67,6 @@ public class StatusBarIconHolder {
 
     public static final int TYPE_BLUETOOTH = 5;
 
-    public static final int TYPE_NETWORK_TRAFFIC = 42;
     public static final int TYPE_IMS = 6;
 
     @IntDef({
@@ -77,8 +76,8 @@ public class StatusBarIconHolder {
             TYPE_MOBILE_NEW,
             TYPE_WIFI_NEW,
             TYPE_BLUETOOTH,
-            TYPE_NETWORK_TRAFFIC,
             TYPE_IMS
+            TYPE_BLUETOOTH
     })
     @Retention(RetentionPolicy.SOURCE)
     @interface IconType {}
@@ -189,12 +188,6 @@ public class StatusBarIconHolder {
         holder.mIcon = new StatusBarIcon(UserHandle.SYSTEM, context.getPackageName(),
                 Icon.createWithResource(context, resId), 0, 0, contentDescription);
         holder.mTag = state.subId;
-        return holder;
-    }
-
-    public static StatusBarIconHolder fromNetworkTraffic() {
-        StatusBarIconHolder holder = new StatusBarIconHolder();
-        holder.mType = TYPE_NETWORK_TRAFFIC;
         return holder;
     }
 

@@ -27,6 +27,7 @@
     <!-- Unlock ripple animation -->
     <bool name="config_enableUnlockRippleAnimation">true</bool>
 
+<<<<<<< HEAD
     <!-- Body font family -->
     <string name="config_bodyFontFamily">@*android:string/config_bodyFontFamily</string>
 
@@ -41,4 +42,6 @@
     -->
     <string name="config_screenRecorderAVCProfileLevel" translatable="false">4.2</string>
 
+=======
+>>>>>>> parent of c0ca7adc0d27 (Squashed import of NetworkTraffic)
 </resources>
