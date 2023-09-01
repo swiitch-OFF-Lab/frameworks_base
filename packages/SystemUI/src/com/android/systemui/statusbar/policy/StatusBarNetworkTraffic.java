@@ -32,7 +32,6 @@ import com.android.systemui.statusbar.StatusIconDisplayable;
 import com.android.keyguard.KeyguardUpdateMonitor;
 import com.android.keyguard.KeyguardUpdateMonitorCallback;
 
-import java.util.ArrayList;
 
 /** @hide */
 public class StatusBarNetworkTraffic extends NetworkTraffic implements DarkReceiver,
@@ -65,11 +64,11 @@ public class StatusBarNetworkTraffic extends NetworkTraffic implements DarkRecei
     }
 
     @Override
-    public void onDarkChanged(ArrayList<Rect> areas, float darkIntensity, int tint) {
+    public void onDarkChanged(Rect area, float darkIntensity, int tint) {
         if (mColorIsStatic) {
             return;
         }
-        newTint = DarkIconDispatcher.getTint(areas, this, tint);
+        newTint = DarkIconDispatcher.getTint(area, this, tint);
         checkUpdateTrafficDrawable();
     }
 
