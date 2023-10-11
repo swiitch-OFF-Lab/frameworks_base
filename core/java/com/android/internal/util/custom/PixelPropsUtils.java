@@ -48,6 +48,7 @@ public class PixelPropsUtils {
     private static final String PACKAGE_GMS = "com.google.android.gms";
     private static final ComponentName GMS_ADD_ACCOUNT_ACTIVITY = ComponentName.unflattenFromString(
             "com.google.android.gms/.auth.uiflows.minutemaid.MinuteMaidActivity");
+    private static final String PACKAGE_NETFLIX = "com.netflix.mediaclient";
 
     private static final boolean DEBUG = false;
 
@@ -303,6 +304,9 @@ public class PixelPropsUtils {
                 propsToChange.putAll(propsToChangePixelXL);
             } else if (isPixelDevice) {
                 return;
+                } else if (!sNetflixModel.isEmpty() && packageName.equals(PACKAGE_NETFLIX)) {
+                dlog("Setting model to " + sNetflixModel + " for Netflix");
+                setPropValue("MODEL", sNetflixModel);
             } else {
                 if (Arrays.asList(packagesToChangePixel7Pro).contains(packageName)) {
                     propsToChange.putAll(propsToChangePixel7Pro);
@@ -340,11 +344,6 @@ public class PixelPropsUtils {
         // Set proper indexing fingerprint
         if (packageName.equals("com.google.android.settings.intelligence")) {
             setPropValue("FINGERPRINT", Build.VERSION.INCREMENTAL);
-            return;
-        }
-        if (!sNetflixModel.isEmpty() && packageName.equals("com.netflix.mediaclient")) {
-            if (DEBUG) Log.d(TAG, "Setting model to " + sNetflixModel + " for Netflix");
-            setPropValue("MODEL", sNetflixModel);
             return;
         }
     }
